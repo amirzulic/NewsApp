@@ -8,15 +8,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#e8d7a7'
-        }
-    },
-});
 
 function Navbar() {
     const [value, setValue] = React.useState('1');
@@ -26,30 +17,29 @@ function Navbar() {
     };
     return (
         <div>
-            <ThemeProvider theme={theme}>
-                <Box sx={{ flexGrow: 1 }}>
-                    <AppBar position="static" color="primary">
-                        <Toolbar>
-                            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                                NEWS APP
-                            </Typography>
-                            <Button color="inherit" disabled>The biggest news platform</Button>
-                        </Toolbar>
-                    </AppBar>
-                </Box>
-                <Box sx={{width: '100%', typography: 'body1'}}>
-                    <TabContext value={value}>
-                        <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                            <TabList onChange={handleChange} aria-label="lab API tabs example" color="primary">
-                                <Tab label="Main Page" value="1"/>
-                            </TabList>
-                        </Box>
-                        <TabPanel value="1">
-                            The news list will go here
-                        </TabPanel>
-                    </TabContext>
-                </Box>
-            </ThemeProvider>
+
+            <Box sx={{flexGrow: 1}}>
+                <AppBar position="static" color="secondary">
+                    <Toolbar>
+                        <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
+                            NEWS APP
+                        </Typography>
+                        <Button color="inherit" disabled>The biggest news platform</Button>
+                    </Toolbar>
+                </AppBar>
+            </Box>
+            <Box sx={{width: '100%', typography: 'body1'}}>
+                <TabContext value={value}>
+                    <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                        <TabList onChange={handleChange} aria-label="lab API tabs example" color="primary">
+                            <Tab label="Main Page" value="1"/>
+                        </TabList>
+                    </Box>
+                    <TabPanel value="1">
+                        The news list will go here
+                    </TabPanel>
+                </TabContext>
+            </Box>
         </div>
     );
 }
