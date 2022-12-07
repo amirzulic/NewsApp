@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
+import Page from "./components/Page";
 
 const theme = createTheme({
     palette: {
@@ -8,7 +8,8 @@ const theme = createTheme({
             main: '#e8d7a7'
         },
         secondary: {
-            main: '#f2e9ce'
+            main: '#f2e9ce',
+            dark: '#595751'
         }
     },
 });
@@ -17,7 +18,7 @@ function App() {
     return (
         <div>
             <ThemeProvider theme={theme}>
-                <Navbar/>
+                <Page/>
             </ThemeProvider>
         </div>
     );
