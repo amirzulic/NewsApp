@@ -17,7 +17,6 @@ function Navbar() {
     };
     return (
         <div>
-
             <Box sx={{flexGrow: 1}}>
                 <AppBar position="static" color="secondary">
                     <Toolbar>
