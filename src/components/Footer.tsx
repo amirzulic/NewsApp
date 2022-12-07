@@ -7,11 +7,13 @@ import Link from "@mui/material/Link";
 function Footer() {
     const help = ["Contact", "Support", "Privacy Policy"];
     const links = ["Facebook", "LinkedIn", "Instagram"];
-    return(
+    return (
         <footer>
             <Box
-                sx = {{backgroundColor: 'secondary.main', width: '100%', position: 'fixed', bottom: 0, p:2,
-                    color: 'secondary.dark'}}>
+                sx={{
+                    backgroundColor: 'secondary.main', p: 2,
+                    color: 'secondary.dark'
+                }}>
                 <Container maxWidth="lg">
                     <Grid container spacing={5}>
                         <Grid item xs={12} sm={4}>

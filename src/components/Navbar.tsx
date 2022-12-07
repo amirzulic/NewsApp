@@ -8,6 +8,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import News from "./News";
 
 function Navbar() {
     const [value, setValue] = React.useState('1');
@@ -35,7 +36,7 @@ function Navbar() {
                         </TabList>
                     </Box>
                     <TabPanel value="1">
-                        The news list will go here
+                        <News/>
                     </TabPanel>
                 </TabContext>
             </Box>
