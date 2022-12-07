@@ -5,6 +5,8 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 
 function Footer() {
+    const help = ["Contact", "Support", "Privacy Policy"];
+    const links = ["Facebook", "LinkedIn", "Instagram"];
     return(
         <footer>
             <Box
@@ -14,57 +16,33 @@ function Footer() {
                     <Grid container spacing={5}>
                         <Grid item xs={12} sm={4}>
                             <Box borderBottom={1}>Help</Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    Contact
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    Support
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    Privacy policy
-                                </Link>
-                            </Box>
+                            {help.map((item, key) => (
+                                <Box>
+                                    <Link href="/" color="inherit" key={key}>
+                                        {item}
+                                    </Link>
+                                </Box>
+                            ))}
                         </Grid>
                         <Grid item xs={12} sm={4}>
                             <Box borderBottom={1}>Company links</Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    Facebook
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    LinkedIn
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    Instagram
-                                </Link>
-                            </Box>
+                            {links.map((item, key) => (
+                                <Box>
+                                    <Link href="/" color="inherit" key={key}>
+                                        {item}
+                                    </Link>
+                                </Box>
+                            ))}
                         </Grid>
                         <Grid item xs={12} sm={4}>
                             <Box borderBottom={1}>Creator links</Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    Facebook
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    LinkedIn
-                                </Link>
-                            </Box>
-                            <Box>
-                                <Link href="/" color="inherit">
-                                    Instagram
-                                </Link>
-                            </Box>
+                            {links.map((item, key) => (
+                                <Box>
+                                    <Link href="/" color="inherit" key={key}>
+                                        {item}
+                                    </Link>
+                                </Box>
+                            ))}
                         </Grid>
                     </Grid>
                 </Container>
