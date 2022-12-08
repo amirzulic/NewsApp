@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import {text} from "../data/Data";
+import {SINGLE_REPORT_TEXT}  from "../data/Data";
 import CommentsSection from "./CommentsSection";
 
 function SingleReport() {
@@ -35,7 +35,7 @@ function SingleReport() {
                                     </h1>
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    {text}
+                                    {SINGLE_REPORT_TEXT}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     <p>Author - Name</p>

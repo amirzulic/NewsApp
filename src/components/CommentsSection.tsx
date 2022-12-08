@@ -17,18 +17,17 @@ function CommentsSection(props) {
                     HIDE COMMENTS
                 </Button>
             }
-            {props.showComments ?
+            {props.showComments &&
                 <Box>
                     <CommentForm/>
-                </Box> : null
+                </Box>
             }
-            {props.showComments ? props.names.map((name, key) => (
+            {props.showComments && props.names.map((name, key) => (
                     <Box key={key}>
                         <br/>
                         <Comment name = {name}/>
                     </Box>
                 ))
-                : null
             }
         </div>
     );
