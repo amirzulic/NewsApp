@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
-function CommentList(props) {
+function Comment(props) {
     const date = new Date().toDateString();
     return (
         <div>
@@ -25,4 +25,4 @@ function CommentList(props) {
     );
 }
 
-export default CommentList;
+export default Comment;

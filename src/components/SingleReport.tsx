@@ -5,24 +5,11 @@ import {CardActionArea} from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CommentForm from "./CommentForm";
-import CommentList from "./CommentList";
+import {text} from "../data/Data";
+import CommentsSection from "./CommentsSection";
 
 function SingleReport() {
-    const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis quis ex vel mattis. " +
-        "Etiam eu augue commodo, efficitur justo at, egestas turpis. Nulla congue, magna ut dictum lacinia, massa quam " +
-        "malesuada neque, ut varius lectus augue ac enim. Sed tincidunt turpis id lacus blandit, id rutrum nibh iaculis. " +
-        "In urna mi, feugiat id eros at, euismod vulputate sem. Cras vitae elit vel lacus posuere varius. " +
-        "Phasellus pretium rutrum massa, vitae facilisis dui fringilla ut. Aenean mattis justo in tortor semper venenatis. " +
-        "Phasellus laoreet nibh vel ligula semper, sit amet elementum dui rutrum.\n" +
-        "\n" +
-        "Nullam in gravida urna. Praesent vel purus ipsum. Fusce elementum, odio quis convallis varius, ipsum dui efficitur nulla," +
-        "et semper urna est nec urna. Donec a commodo odio. Etiam orci turpis, dapibus vitae dolor non, aliquet pretium massa." +
-        " Morbi lobortis pretium sem, vel pellentesque nibh suscipit vel. Nullam efficitur justo sed congue ornare. " +
-        "Duis auctor sodales risus, at posuere elit iaculis a. Aenean vel nibh magna.";
-
     const names = ["Commenter1", "Commenter2", "James Reed", "Greg Oden"]
 
     const [showComments, setShowComments] = useState(false);
@@ -53,29 +40,7 @@ function SingleReport() {
                                 <Typography variant="body2" color="text.secondary">
                                     <p>Author - Name</p>
                                 </Typography>
-                                {!showComments ?
-                                    <Button sx={{backgroundColor: "#e8d7a7", color: 'text.secondary', borderRadius: 0}}
-                                            onClick={() => setShowComments(true)}>
-                                        COMMENTS
-                                    </Button> :
-                                    <Button sx={{backgroundColor: "#e8d7a7", color: 'text.secondary', borderRadius: 0}}
-                                            onClick={() => setShowComments(false)}>
-                                        HIDE COMMENTS
-                                    </Button>
-                                }
-                                {showComments ?
-                                    <Box>
-                                        <CommentForm/>
-                                    </Box> : null
-                                }
-                                {showComments ? names.map((name, key) => (
-                                        <Box key={key}>
-                                            <br/>
-                                            <CommentList name = {name}/>
-                                        </Box>
-                                    ))
-                                     : null
-                                }
+                                <CommentsSection showComments = {showComments} setShowComments = {setShowComments} names = {names}/>
                                 <hr/>
                                 <Typography variant="body2" color="text.secondary">
                                     <small>Copyright - NewsApp 2022</small>
