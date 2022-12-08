@@ -1,7 +1,5 @@
 import React from 'react';
 import Cards from "./Cards";
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 function News() {

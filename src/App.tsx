@@ -2,6 +2,9 @@ import React from "react";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Page from "./components/Page";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import SingleReport from "./components/SingleReport";
 
 const theme = createTheme({
     palette: {
@@ -19,9 +22,12 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <BrowserRouter>
+                <Navbar/>
                 <Routes>
                     <Route path="/" element={<Page/>}></Route>
+                    <Route path="/report" element={<SingleReport/>}></Route>
                 </Routes>
+                <Footer/>
             </BrowserRouter>
         </ThemeProvider>
     );

@@ -13,7 +13,7 @@ function Cards(props) {
     const navigate = useNavigate();
 
     function handleNavigate() {
-        navigate("/");
+        navigate("/report");
     }
 
     return (
