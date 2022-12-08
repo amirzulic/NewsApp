@@ -12,8 +12,8 @@ import {useNavigate} from "react-router-dom";
 function Cards(props) {
     const navigate = useNavigate();
 
-    function handleNavigate() {
-        navigate("/report");
+    function handleNavigate(id) {
+        navigate("/report/"+id);
     }
 
     return (
@@ -28,7 +28,7 @@ function Cards(props) {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            {props.title}
+                            {props.reports.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -37,7 +37,7 @@ function Cards(props) {
                     </CardContent>
                     <CardActions>
                         <Button size="small" onClick={() => {
-                            handleNavigate()
+                            handleNavigate(props.reports.id)
                         }}>Learn More</Button>
                     </CardActions>
                 </CardActionArea>

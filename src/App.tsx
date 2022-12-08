@@ -25,7 +25,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<Page/>}></Route>
-                    <Route path="/report" element={<SingleReport/>}></Route>
+                    <Route path="/report/:id" element={<SingleReport/>}></Route>
                 </Routes>
                 <Footer/>
             </BrowserRouter>
