@@ -6,13 +6,21 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import {SINGLE_REPORT_TEXT}  from "../data/Data";
-import CommentsSection from "./CommentsSection";
+import {SINGLE_REPORT_TEXT}  from "../../data/Data";
+import CommentsSection from "../comments/CommentsSection";
+import {useParams} from "react-router-dom";
+import {PAGE_REPORTS} from "../../data/Data";
 
 function SingleReport() {
     const names = ["Commenter1", "Commenter2", "James Reed", "Greg Oden"]
 
+    const { id } = useParams();
+
     const [showComments, setShowComments] = useState(false);
+
+    const report = PAGE_REPORTS.find(obj => {
+        return obj.id === parseInt(id!);
+    });
 
     return (
         <div>
@@ -31,14 +39,14 @@ function SingleReport() {
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     <h1>
-                                        Title
+                                        {report?.title}
                                     </h1>
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     {SINGLE_REPORT_TEXT}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    <p>Author - Name</p>
+                                    <p>Author - {report?.author}</p>
                                 </Typography>
                                 <CommentsSection showComments = {showComments} setShowComments = {setShowComments} names = {names}/>
                                 <hr/>

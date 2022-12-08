@@ -9,3 +9,31 @@ export const SINGLE_REPORT_TEXT = "Lorem ipsum dolor sit amet, consectetur adipi
     "et semper urna est nec urna. Donec a commodo odio. Etiam orci turpis, dapibus vitae dolor non, aliquet pretium massa." +
     " Morbi lobortis pretium sem, vel pellentesque nibh suscipit vel. Nullam efficitur justo sed congue ornare. " +
     "Duis auctor sodales risus, at posuere elit iaculis a. Aenean vel nibh magna.";
+
+export const PAGE_REPORTS = [
+    {
+        id: 1,
+        title: "Report 1",
+        author: "Some author"
+    },
+    {
+        id: 2,
+        title: "Report 2",
+        author: "A different author"
+    },
+    {
+        id: 3,
+        title: "Report 3",
+        author: "John Wick"
+    },
+    {
+        id: 4,
+        title: "Report 4",
+        author: "Greg Oden"
+    },
+    {
+        id: 5,
+        title: "Report 5",
+        author: "Kylian Mbappe"
+    },
+]

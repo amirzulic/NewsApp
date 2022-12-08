@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 
 function Comment(props) {
     const date = new Date().toDateString();

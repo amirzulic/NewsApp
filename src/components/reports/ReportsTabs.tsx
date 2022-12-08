@@ -1,12 +1,12 @@
 import React from "react";
-import News from "./News";
+import Reports from "./Reports";
 import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
 import TabList from "@mui/lab/TabList";
 import Tab from "@mui/material/Tab";
 import TabPanel from "@mui/lab/TabPanel";
 
-function Page() {
+function ReportsTabs() {
     const [value, setValue] = React.useState('1');
 
     const handleChange = (event, newValue) => {
@@ -22,7 +22,7 @@ function Page() {
                         </TabList>
                     </Box>
                     <TabPanel value="1">
-                        <News/>
+                        <Reports/>
                     </TabPanel>
                 </TabContext>
             </Box>
@@ -30,4 +30,4 @@ function Page() {
     );
 }
 
-export default Page;
+export default ReportsTabs;

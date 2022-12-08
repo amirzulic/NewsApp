@@ -4,16 +4,15 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Box from "@mui/material/Box";
 import CardMedia from '@mui/material/CardMedia';
 import {CardActionArea} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
-function Cards(props) {
+function ReportCard(props) {
     const navigate = useNavigate();
 
-    function handleNavigate() {
-        navigate("/report");
+    function handleNavigate(id) {
+        navigate("/report/"+id);
     }
 
     return (
@@ -28,7 +27,7 @@ function Cards(props) {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            {props.title}
+                            {props.reports.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -37,7 +36,7 @@ function Cards(props) {
                     </CardContent>
                     <CardActions>
                         <Button size="small" onClick={() => {
-                            handleNavigate()
+                            handleNavigate(props.reports.id)
                         }}>Learn More</Button>
                     </CardActions>
                 </CardActionArea>
@@ -46,4 +45,4 @@ function Cards(props) {
     );
 }
 
-export default Cards;
+export default ReportCard;
