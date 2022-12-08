@@ -1,18 +1,18 @@
 import React from 'react';
-import Cards from "./Cards";
+import ReportCard from "./ReportCard";
 import Grid from '@mui/material/Grid';
-import {PAGE_REPORTS} from "../data/Data";
+import {PAGE_REPORTS} from "../../data/Data";
 
-function News() {
+function Reports() {
     return (
         <Grid container sx={{flexGrow: 1}} spacing={2}>
             {PAGE_REPORTS.map((item, key) => (
                 <Grid item xs={12} md={4} key={key}>
-                    <Cards reports={item}/>
+                    <ReportCard reports={item}/>
                 </Grid>
             ))}
         </Grid>
     );
 }
 
-export default News;
+export default Reports;

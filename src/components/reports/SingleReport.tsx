@@ -6,10 +6,10 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import {SINGLE_REPORT_TEXT}  from "../data/Data";
-import CommentsSection from "./CommentsSection";
+import {SINGLE_REPORT_TEXT}  from "../../data/Data";
+import CommentsSection from "../comments/CommentsSection";
 import {useParams} from "react-router-dom";
-import {PAGE_REPORTS} from "../data/Data";
+import {PAGE_REPORTS} from "../../data/Data";
 
 function SingleReport() {
     const names = ["Commenter1", "Commenter2", "James Reed", "Greg Oden"]

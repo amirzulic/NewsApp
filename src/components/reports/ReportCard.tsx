@@ -9,7 +9,7 @@ import CardMedia from '@mui/material/CardMedia';
 import {CardActionArea} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
-function Cards(props) {
+function ReportCard(props) {
     const navigate = useNavigate();
 
     function handleNavigate(id) {
@@ -46,4 +46,4 @@ function Cards(props) {
     );
 }
 
-export default Cards;
+export default ReportCard;
