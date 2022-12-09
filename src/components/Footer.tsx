@@ -3,10 +3,11 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import { LINKS_CREATOR } from '../data/Data';
+import { LINKS_COMPANY } from '../data/Data';
 
 function Footer() {
   const help = ['Contact', 'Support', 'Privacy Policy'];
-  const links = ['Facebook', 'LinkedIn', 'Instagram'];
   return (
     <footer>
       <Box
@@ -20,8 +21,8 @@ function Footer() {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Help</Box>
               {help.map((item, key) => (
-                <Box>
-                  <Link href="/" color="inherit" key={key}>
+                <Box key={key}>
+                  <Link href="/" color="inherit">
                     {item}
                   </Link>
                 </Box>
@@ -29,20 +30,20 @@ function Footer() {
             </Grid>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Company links</Box>
-              {links.map((item, key) => (
-                <Box>
-                  <Link href="/" color="inherit" key={key}>
-                    {item}
+              {LINKS_COMPANY.map((item, key) => (
+                <Box key={key}>
+                  <Link href={item.link} color="inherit">
+                    {item.media}
                   </Link>
                 </Box>
               ))}
             </Grid>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Creator links</Box>
-              {links.map((item, key) => (
-                <Box>
-                  <Link href="/" color="inherit" key={key}>
-                    {item}
+              {LINKS_CREATOR.map((item, key) => (
+                <Box key={key}>
+                  <Link href={item.link} color="inherit">
+                    {item.media}
                   </Link>
                 </Box>
               ))}
