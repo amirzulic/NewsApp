@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { COMMENT_LIST } from '../../data/Data';
 
 function CommentForm() {
   const [comment, setComment] = useState('');
@@ -11,8 +12,14 @@ function CommentForm() {
   }
 
   function createComment() {
-    alert(comment);
+    let sendComment = {
+      comment: comment,
+      date: new Date().toDateString()
+    };
+    COMMENT_LIST.push(sendComment);
+    alert('List pushed!');
   }
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>

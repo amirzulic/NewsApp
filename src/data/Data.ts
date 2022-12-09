@@ -67,3 +67,14 @@ export const LINKS_COMPANY = [
     link: 'https://www.instagram.com/infobip/?hl=en'
   }
 ];
+
+export const COMMENT_LIST = [
+  {
+    comment: 'Something is written here',
+    date: new Date().toDateString()
+  },
+  {
+    comment: 'This article is very interesting',
+    date: new Date().toDateString()
+  }
+];

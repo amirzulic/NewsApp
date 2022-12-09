@@ -3,3 +3,8 @@ export interface Report {
   title: string;
   author: string;
 }
+
+export interface SingleComment {
+  comment: string;
+  date: string;
+}
