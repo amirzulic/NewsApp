@@ -9,7 +9,8 @@ import SingleReport from './components/reports/SingleReport';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#e8d7a7'
+      main: '#e8d7a7',
+      light: '#fcf5e1'
     },
     secondary: {
       main: '#f2e9ce',

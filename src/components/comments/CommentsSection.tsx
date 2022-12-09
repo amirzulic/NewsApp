@@ -29,13 +29,27 @@ function CommentsSection(props: Props) {
           <CommentForm />
         </Box>
       )}
-      {showComments &&
-        props.names.map((name, key) => (
-          <Box key={key}>
-            <br />
-            <Comment name={name} />
+      {showComments && (
+        <div>
+          <br />
+          <Box
+            sx={{
+              borderRadius: 1,
+              border: 1,
+              borderColor: '#bfbeba',
+              color: 'text.secondary',
+              backgroundColor: 'primary.light'
+            }}>
+            {props.names.map((name, key) => (
+              <div key={key}>
+                <Comment />
+                <br />
+              </div>
+            ))}
           </Box>
-        ))}
+          <br />
+        </div>
+      )}
     </div>
   );
 }
