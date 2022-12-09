@@ -12,8 +12,6 @@ import { useParams } from 'react-router-dom';
 import { PAGE_REPORTS } from '../../data/Data';
 
 function SingleReport() {
-  const names = ['Commenter1', 'Commenter2', 'James Reed', 'Greg Oden'];
-
   const { id } = useParams();
 
   const report = PAGE_REPORTS.find((obj) => {
@@ -44,7 +42,7 @@ function SingleReport() {
                 <Typography variant="body2" color="text.secondary">
                   <p>Author - {report?.author}</p>
                 </Typography>
-                <CommentsSection names={names} />
+                <CommentsSection />
                 <hr />
                 <Typography variant="body2" color="text.secondary">
                   <small>Copyright - NewsApp 2022</small>

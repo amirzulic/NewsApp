@@ -3,11 +3,9 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
+import { COMMENT_LIST } from '../../data/Data';
 
-interface Props {
-  names: Array<string>;
-}
-function CommentsSection(props: Props) {
+function CommentsSection() {
   const [showComments, setShowComments] = useState(false);
   return (
     <div>
@@ -40,9 +38,9 @@ function CommentsSection(props: Props) {
               color: 'text.secondary',
               backgroundColor: 'primary.light'
             }}>
-            {props.names.map((name, key) => (
+            {COMMENT_LIST.map((item, key) => (
               <div key={key}>
-                <Comment />
+                <Comment comment={item} />
                 <br />
               </div>
             ))}
