@@ -6,15 +6,24 @@ import { getAllReports } from '../../service/ReportService';
 function Reports() {
   const [reports, setReports] = useState([]);
 
-  useEffect(() => {
-    getAllReports()
+  function handleGetAllReports(controller) {
+    getAllReports(controller)
       .then((res) => {
         setReports(res.data.reports);
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  useEffect(() => {
+    const controller = new AbortController();
+    handleGetAllReports(controller);
+    return () => {
+      controller.abort();
+    };
   }, []);
+
   return (
     <Grid container sx={{ flexGrow: 1 }} spacing={2}>
       {reports.map((item, key) => (

@@ -26,3 +26,9 @@ export const LINKS_COMPANY = [
     link: 'https://www.instagram.com/infobip/?hl=en'
   }
 ];
+export const REPORT = {
+  id: 0,
+  title: '',
+  author: '',
+  text: ''
+};

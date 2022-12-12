@@ -9,25 +9,29 @@ import Card from '@mui/material/Card';
 import CommentsSection from '../comments/CommentsSection';
 import { useParams } from 'react-router-dom';
 import { getSingleReport } from '../../service/ReportService';
+import { REPORT } from '../../data/Data';
 
 function SingleReport() {
-  const [report, setReport] = useState({
-    id: 0,
-    title: '',
-    author: '',
-    text: ''
-  });
+  const [report, setReport] = useState(REPORT);
 
   const { id } = useParams();
 
-  useEffect(() => {
-    getSingleReport(id)
+  function handleGetSingleReport(controller) {
+    getSingleReport(id, controller)
       .then((res) => {
         setReport(res.data.report);
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  useEffect(() => {
+    const controller = new AbortController();
+    handleGetSingleReport(controller);
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (

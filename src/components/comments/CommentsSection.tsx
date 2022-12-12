@@ -9,14 +9,22 @@ function CommentsSection() {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
 
-  useEffect(() => {
-    getAllComments()
+  function handleGetAllComments(controller) {
+    getAllComments(controller)
       .then((res) => {
         setComments(res.data.comments);
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  useEffect(() => {
+    const controller = new AbortController();
+    handleGetAllComments(controller);
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
