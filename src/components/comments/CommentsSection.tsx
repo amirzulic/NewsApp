@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
-import { COMMENT_LIST } from '../../data/Data';
+import { getAllComments } from '../../service/CommentService';
 
 function CommentsSection() {
   const [showComments, setShowComments] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    getAllComments()
+      .then((res) => {
+        setComments(res.data.comments);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
       {!showComments ? (
@@ -38,7 +50,7 @@ function CommentsSection() {
               color: 'text.secondary',
               backgroundColor: 'primary.light'
             }}>
-            {COMMENT_LIST.map((item, key) => (
+            {comments.map((item, key) => (
               <div key={key}>
                 <Comment comment={item} />
                 <br />
