@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import CommentForm from './CommentForm';
@@ -19,13 +19,18 @@ function CommentsSection() {
       });
   }
 
+  const getComments = useCallback(async (controller) => {
+    handleGetAllComments(controller);
+  }, []);
+
   useEffect(() => {
     const controller = new AbortController();
-    handleGetAllComments(controller);
+    getComments(controller);
+
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [getComments]);
 
   return (
     <div>

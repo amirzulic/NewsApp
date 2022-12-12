@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReportCard from './ReportCard';
 import Grid from '@mui/material/Grid';
 import { getAllReports } from '../../service/ReportService';
@@ -16,13 +16,18 @@ function Reports() {
       });
   }
 
+  const getReports = useCallback(async (controller) => {
+    handleGetAllReports(controller);
+  }, []);
+
   useEffect(() => {
     const controller = new AbortController();
-    handleGetAllReports(controller);
+    getReports(controller);
+
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [getReports]);
 
   return (
     <Grid container sx={{ flexGrow: 1 }} spacing={2}>

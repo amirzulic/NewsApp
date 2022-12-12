@@ -29,6 +29,7 @@ function SingleReport() {
   useEffect(() => {
     const controller = new AbortController();
     handleGetSingleReport(controller);
+
     return () => {
       controller.abort();
     };
