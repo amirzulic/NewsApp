@@ -22,26 +22,20 @@ function ReportCard(props: Props) {
     <div>
       <Card>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://www.thediaryofanomad.com/wp-content/w3-webp/uploads/2020/04/london-photo-spots-big-ben-1.jpgw3.webp"
-            alt="image"
-          />
+          <CardMedia component="img" height="150" image={props.report.photo} alt="image" />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {props.report.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+              {props.report.text}
             </Typography>
           </CardContent>
           <CardActions>
             <Button
               size="small"
               onClick={() => {
-                handleNavigate(props.report.id);
+                handleNavigate(props.report.report_id);
               }}>
               Learn More
             </Button>

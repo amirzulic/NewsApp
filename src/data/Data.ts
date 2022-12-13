@@ -27,8 +27,9 @@ export const LINKS_COMPANY = [
   }
 ];
 export const REPORT = {
-  id: 0,
+  report_id: 0,
   title: '',
   author: '',
-  text: ''
+  text: '',
+  photo: ''
 };
