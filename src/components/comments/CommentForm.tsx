@@ -3,8 +3,15 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { postComment } from '../../service/CommentService';
+import { useNavigate } from 'react-router-dom';
 
-function CommentForm() {
+interface Props {
+  report_id: string | undefined;
+}
+function CommentForm(props: Props) {
+  let navigate = useNavigate();
+
   const [comment, setComment] = useState('');
   function handleComment(e) {
     setComment(e.target.value);
@@ -12,10 +19,19 @@ function CommentForm() {
 
   const createComment = () => {
     let sendComment = {
+      //comment_id: 10,
       comment: comment,
-      date: new Date().toDateString()
+      date: new Date().toDateString(),
+      report_id: props.report_id
     };
-    console.log(sendComment);
+    postComment(sendComment)
+      .then((res) => {
+        alert(res.data.message);
+        navigate(0);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

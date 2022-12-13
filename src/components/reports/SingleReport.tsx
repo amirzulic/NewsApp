@@ -72,7 +72,7 @@ function SingleReport() {
                 <Typography variant="body2" color="text.secondary">
                   <p>Author - {report.author}</p>
                 </Typography>
-                <CommentsSection />
+                <CommentsSection id={id} />
                 <hr />
                 <Typography variant="body2" color="text.secondary">
                   <small>Copyright - NewsApp 2022</small>
