@@ -10,9 +10,14 @@ import CommentsSection from '../comments/CommentsSection';
 import { useParams } from 'react-router-dom';
 import { getSingleReport } from '../../service/ReportService';
 import { REPORT } from '../../data/Data';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import LinearProgress from '@mui/material/LinearProgress';
 
 function SingleReport() {
   const [report, setReport] = useState(REPORT);
+  const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const { id } = useParams();
 
@@ -20,9 +25,16 @@ function SingleReport() {
     getSingleReport(id, controller)
       .then((res) => {
         setReport(res.data.report);
+        setLoaded(true);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.code === 'ERR_CANCELED') {
+          console.log(err);
+        } else {
+          console.log(err);
+          setError(true);
+          setLoaded(true);
+        }
       });
   }
 
@@ -38,6 +50,11 @@ function SingleReport() {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
+        {!loaded && (
+          <Box sx={{ width: '100%' }}>
+            <LinearProgress />
+          </Box>
+        )}
         <Grid container>
           <Grid item xs={12}>
             <Card>
@@ -69,6 +86,16 @@ function SingleReport() {
           </Grid>
         </Grid>
       </Box>
+      {error && (
+        <Snackbar
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          open={error}
+          autoHideDuration={5000}>
+          <Alert severity="error" sx={{ width: '100%' }}>
+            There has been a problem with loading the data!
+          </Alert>
+        </Snackbar>
+      )}
     </div>
   );
 }

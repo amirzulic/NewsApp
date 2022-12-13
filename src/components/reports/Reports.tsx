@@ -1,42 +1,29 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import ReportCard from './ReportCard';
 import Grid from '@mui/material/Grid';
-import { getAllReports } from '../../service/ReportService';
+import SomethingWentWrong from '../error/SomethingWentWrong';
+import { Report } from '../types/Types';
 
-function Reports() {
-  const [reports, setReports] = useState([]);
-
-  function handleGetAllReports(controller) {
-    getAllReports(controller)
-      .then((res) => {
-        setReports(res.data.reports);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  const getReports = useCallback(async (controller) => {
-    handleGetAllReports(controller);
-  }, []);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    getReports(controller);
-
-    return () => {
-      controller.abort();
-    };
-  }, [getReports]);
-
+interface Props {
+  error: boolean;
+  errorCode: string;
+  reports: Report[];
+}
+function Reports(props: Props) {
   return (
-    <Grid container sx={{ flexGrow: 1 }} spacing={2}>
-      {reports.map((item, key) => (
-        <Grid item xs={12} md={4} key={key}>
-          <ReportCard report={item} />
+    <div>
+      {!props.error ? (
+        <Grid container sx={{ flexGrow: 1 }} spacing={2}>
+          {props.reports.map((item, key) => (
+            <Grid item xs={12} md={4} key={key}>
+              <ReportCard report={item} />
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
+      ) : (
+        <SomethingWentWrong errors={props.errorCode} />
+      )}
+    </div>
   );
 }
 

@@ -4,10 +4,13 @@ import Box from '@mui/material/Box';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
 import { getAllComments } from '../../service/CommentService';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function CommentsSection() {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState(false);
 
   function handleGetAllComments(controller) {
     getAllComments(controller)
@@ -15,7 +18,12 @@ function CommentsSection() {
         setComments(res.data.comments);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.code === 'ERR_CANCELED') {
+          console.log(err);
+        } else {
+          console.log(err);
+          setError(true);
+        }
       });
   }
 
@@ -70,6 +78,13 @@ function CommentsSection() {
               </div>
             ))}
           </Box>
+          {error && (
+            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={error}>
+              <Alert severity="error" sx={{ width: '100%' }}>
+                There has been a problem with loading the data!
+              </Alert>
+            </Snackbar>
+          )}
           <br />
         </div>
       )}
