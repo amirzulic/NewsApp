@@ -4,7 +4,11 @@ import Grid from '@mui/material/Grid';
 import { getAllReports } from '../../service/ReportService';
 import SomethingWentWrong from '../error/SomethingWentWrong';
 
-function Reports() {
+interface Props {
+  // eslint-disable-next-line no-unused-vars
+  getLoaded: (b: boolean) => void;
+}
+function Reports(props: Props) {
   const [reports, setReports] = useState([]);
   const [error, setError] = useState(false);
   const [errorCode, setErrorCode] = useState('');
@@ -13,15 +17,18 @@ function Reports() {
     getAllReports(controller)
       .then((res) => {
         setReports(res.data.reports);
+        props.getLoaded(true);
       })
       .catch((err) => {
         {
           if (err.code === 'ERR_CANCELED') {
             console.log(err);
+            props.getLoaded(false);
           } else {
             console.log(err);
             setError(true);
             setErrorCode(err.code);
+            props.getLoaded(true);
           }
         }
       });
