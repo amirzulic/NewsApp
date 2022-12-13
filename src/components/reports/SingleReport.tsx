@@ -25,6 +25,7 @@ function SingleReport() {
     getSingleReport(id, controller)
       .then((res) => {
         setReport(res.data.report);
+        console.log(res.data.report);
         setLoaded(true);
       })
       .catch((err) => {
@@ -59,12 +60,7 @@ function SingleReport() {
           <Grid item xs={12}>
             <Card>
               <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="500"
-                  image="https://www.thediaryofanomad.com/wp-content/w3-webp/uploads/2020/04/london-photo-spots-big-ben-1.jpgw3.webp"
-                  alt="image"
-                />
+                <CardMedia component="img" height="500" image={report.photo} alt="image" />
               </CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
