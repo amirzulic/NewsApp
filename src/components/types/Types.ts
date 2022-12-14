@@ -2,8 +2,9 @@ export interface Report {
   report_id: number;
   title: string;
   author: string;
-  text: string;
+  headline_text: string;
   photo: string;
+  main_text: string;
 }
 
 export interface SingleComment {

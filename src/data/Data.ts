@@ -31,7 +31,8 @@ export const REPORT = {
   title: '',
   author: '',
   text: '',
-  photo: ''
+  photo: '',
+  main_text: ''
 };
 
 export const SEND_EMAIL = {
