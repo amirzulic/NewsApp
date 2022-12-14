@@ -6,6 +6,16 @@ import Comment from './Comment';
 import { getAllComments } from '../../service/CommentService';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import ShareIcon from '@mui/icons-material/Share';
+import Grid from '@mui/material/Grid';
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  ViberIcon,
+  ViberShareButton
+} from 'react-share';
 
 interface Props {
   id: string | undefined;
@@ -13,6 +23,7 @@ interface Props {
 
 function CommentsSection(props: Props) {
   const [showComments, setShowComments] = useState(false);
+  const [showShare, setShowShare] = useState(1);
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(false);
 
@@ -58,6 +69,40 @@ function CommentsSection(props: Props) {
           onClick={() => setShowComments(false)}>
           HIDE COMMENTS
         </Button>
+      )}
+      <Button
+        onClick={() => {
+          setShowShare(showShare + 1);
+        }}>
+        <ShareIcon /> Share article
+      </Button>
+      {showShare % 2 === 0 && (
+        <Grid container sx={{ textAlign: 'center' }}>
+          <Grid item xs={12} md={3} lg={1}>
+            <Box sx={{ textAlign: 'start' }}>
+              <br />
+              <FacebookShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+                <FacebookIcon size={40} round={true} />
+              </FacebookShareButton>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={3} lg={1}>
+            <Box sx={{ textAlign: 'start' }}>
+              <br />
+              <LinkedinShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+                <LinkedinIcon size={40} round={true} />
+              </LinkedinShareButton>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={3} lg={1}>
+            <Box sx={{ textAlign: 'start' }}>
+              <br />
+              <ViberShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+                <ViberIcon size={40} round={true} />
+              </ViberShareButton>
+            </Box>
+          </Grid>
+        </Grid>
       )}
       {showComments && (
         <Box>
