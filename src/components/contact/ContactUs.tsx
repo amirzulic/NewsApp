@@ -6,26 +6,19 @@ import emailjs from '@emailjs/browser';
 import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import { SEND_EMAIL } from '../../data/Data';
 
 function ContactUs() {
   let navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
+  const [emailData, setEmailData] = useState(SEND_EMAIL);
   const [hasFailed, setHasFailed] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   function sendEmail() {
-    const sendEmail = {
-      email: email,
-      name: name,
-      message: message
-    };
-
-    emailjs.send('service_eg2wfdo', 'template_agdnohr', sendEmail, 'APfvGvW3gFWJIaT4D').then(
+    emailjs.send('service_eg2wfdo', 'template_agdnohr', emailData, 'APfvGvW3gFWJIaT4D').then(
       function () {
-        alert('Successfully recorded!');
-        navigate('/');
+        setIsSuccess(true);
       },
       function () {
         setHasFailed(true);
@@ -64,7 +57,7 @@ function ContactUs() {
                   size="small"
                   sx={{ width: 1 }}
                   onChange={(e) => {
-                    setEmail(e.target.value);
+                    setEmailData({ ...emailData, email: e.target.value });
                   }}
                 />
               </Grid>
@@ -77,7 +70,7 @@ function ContactUs() {
                   size="small"
                   sx={{ width: 1 }}
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setEmailData({ ...emailData, name: e.target.value });
                   }}
                 />
               </Grid>
@@ -92,7 +85,7 @@ function ContactUs() {
                   size="small"
                   sx={{ width: 1 }}
                   onChange={(e) => {
-                    setMessage(e.target.value);
+                    setEmailData({ ...emailData, message: e.target.value });
                   }}
                 />
               </Grid>
@@ -116,6 +109,21 @@ function ContactUs() {
         <Grid item xs={2}></Grid>
       </Grid>
       <br />
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        open={isSuccess}
+        autoHideDuration={5000}>
+        <Alert severity="success" sx={{ width: '100%' }}>
+          Successfuly sent!
+          <Button
+            sx={{ color: 'text.secondary', borderRadius: 0 }}
+            onClick={() => {
+              navigate('/');
+            }}>
+            HOME PAGE
+          </Button>
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
