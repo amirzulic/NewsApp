@@ -81,7 +81,7 @@ function CommentsSection(props: Props) {
           <Grid item xs={12} md={3} lg={1}>
             <Box sx={{ textAlign: 'start' }}>
               <br />
-              <FacebookShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+              <FacebookShareButton url={'localhost:3000/report' + props.id}>
                 <FacebookIcon size={40} round={true} />
               </FacebookShareButton>
             </Box>
@@ -89,7 +89,7 @@ function CommentsSection(props: Props) {
           <Grid item xs={12} md={3} lg={1}>
             <Box sx={{ textAlign: 'start' }}>
               <br />
-              <LinkedinShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+              <LinkedinShareButton url={'localhost:3000/report' + props.id}>
                 <LinkedinIcon size={40} round={true} />
               </LinkedinShareButton>
             </Box>
@@ -97,7 +97,7 @@ function CommentsSection(props: Props) {
           <Grid item xs={12} md={3} lg={1}>
             <Box sx={{ textAlign: 'start' }}>
               <br />
-              <ViberShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+              <ViberShareButton url={'localhost:3000/report' + props.id}>
                 <ViberIcon size={40} round={true} />
               </ViberShareButton>
             </Box>

@@ -65,21 +65,21 @@ function Footer() {
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Box sx={{ textAlign: 'end' }}>
-                    <FacebookShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+                    <FacebookShareButton url={'localhost:3000'}>
                       <FacebookIcon height={40} />
                     </FacebookShareButton>
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Box sx={{ textAlign: 'center' }}>
-                    <LinkedinShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+                    <LinkedinShareButton url={'localhost:3000'}>
                       <LinkedInIcon height={40} />
                     </LinkedinShareButton>
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={4}>
                   <Box sx={{ textAlign: 'start' }}>
-                    <RedditShareButton url={'https://trello.com/b/jzt85IOO/amir'}>
+                    <RedditShareButton url={'localhost:3000'}>
                       <RedditIcon height={40} />
                     </RedditShareButton>
                   </Box>
