@@ -67,7 +67,7 @@ function SingleReport() {
                   <h1>{report.title}</h1>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {report.text}
+                  {report.main_text}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <p>Author - {report.author}</p>

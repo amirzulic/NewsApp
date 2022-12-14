@@ -28,7 +28,7 @@ function ReportCard(props: Props) {
               {props.report.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {props.report.text}
+              {props.report.headline_text}
             </Typography>
           </CardContent>
           <CardActions>
