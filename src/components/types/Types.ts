@@ -4,7 +4,6 @@ export interface Report {
   author: string;
   headline_text: string;
   photo: string;
-
   main_text: string;
 }
 
