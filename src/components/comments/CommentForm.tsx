@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   report_id: string | undefined;
 }
+
 function CommentForm(props: Props) {
   let navigate = useNavigate();
 

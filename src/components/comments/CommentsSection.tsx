@@ -10,6 +10,7 @@ import Alert from '@mui/material/Alert';
 interface Props {
   id: string | undefined;
 }
+
 function CommentsSection(props: Props) {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
