@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SingleReport from './components/reports/SingleReport';
+import ContactUs from './components/contact/ContactUs';
 
 const theme = createTheme({
   palette: {
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ReportsTabs />}></Route>
           <Route path="/report/:id" element={<SingleReport />}></Route>
+          <Route path="/contact" element={<ContactUs />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
