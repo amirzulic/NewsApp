@@ -7,13 +7,17 @@ import { getAllComments } from '../../service/CommentService';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-function CommentsSection() {
+interface Props {
+  id: string | undefined;
+}
+
+function CommentsSection(props: Props) {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(false);
 
   function handleGetAllComments(controller) {
-    getAllComments(controller)
+    getAllComments(props.id, controller)
       .then((res) => {
         setComments(res.data.comments);
       })
@@ -57,7 +61,7 @@ function CommentsSection() {
       )}
       {showComments && (
         <Box>
-          <CommentForm />
+          <CommentForm report_id={props.id} />
         </Box>
       )}
       {showComments && (
@@ -71,12 +75,16 @@ function CommentsSection() {
               color: 'text.secondary',
               backgroundColor: 'primary.light'
             }}>
-            {comments.map((item, key) => (
-              <div key={key}>
-                <Comment comment={item} />
-                <br />
-              </div>
-            ))}
+            {comments.length !== 0 ? (
+              comments.map((item, key) => (
+                <div key={key}>
+                  <Comment comment={item} />
+                  <br />
+                </div>
+              ))
+            ) : (
+              <div>There is no comments on this article. Wanna be the first to comment?</div>
+            )}
           </Box>
           {error && (
             <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={error}>

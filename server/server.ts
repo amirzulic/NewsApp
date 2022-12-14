@@ -1,13 +1,14 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 var pg = require('pg');
-
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded());
 
 const config = {
   user: 'qwgupwtr',
@@ -57,12 +58,13 @@ app.get('/reports/:id', (req, res) => {
   });
 });
 
-app.get('/comments', (req, res) => {
+app.get('/comments/:id', (req, res) => {
+  let id = req.params.id;
   pool.connect(function (err, client, done) {
     if (err) {
       res.end('{"error" : "Error", "status": 500}');
     }
-    client.query(`SELECT * FROM comment;`, [], function (err, result) {
+    client.query(`SELECT * FROM comment WHERE report_id = ${id};`, [], function (err, result) {
       done();
       if (err) {
         console.info(err);
@@ -70,6 +72,29 @@ app.get('/comments', (req, res) => {
         res.json({ comments: result.rows });
       }
     });
+  });
+});
+
+app.post('/new-comment', (req, res) => {
+  let comment = req.body.comment;
+  let date = req.body.date;
+  let report_id = req.body.report_id;
+  pool.connect(function (err, client, done) {
+    if (err) {
+      res.end('{"error" : "Error", "status": 500}');
+    }
+    client.query(
+      `INSERT INTO comment(comment, date, report_id) VALUES('${comment}', '${date}', ${report_id})`,
+      [],
+      function (err) {
+        done();
+        if (err) {
+          console.info(err);
+        } else {
+          res.json({ message: 'Successfully commented!' });
+        }
+      }
+    );
   });
 });
 
