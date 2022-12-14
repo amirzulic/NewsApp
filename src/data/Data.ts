@@ -33,3 +33,9 @@ export const REPORT = {
   text: '',
   photo: ''
 };
+
+export const SEND_EMAIL = {
+  email: '',
+  name: '',
+  message: ''
+};

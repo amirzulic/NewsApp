@@ -22,7 +22,7 @@ function Footer() {
               <Box borderBottom={1}>Help</Box>
               {help.map((item, key) => (
                 <Box key={key}>
-                  <Link href="/" color="inherit">
+                  <Link href={key === 0 ? '/contact' : '/'} color="inherit">
                     {item}
                   </Link>
                 </Box>

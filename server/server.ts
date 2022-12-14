@@ -47,14 +47,18 @@ app.get('/reports/:id', (req, res) => {
     if (err) {
       res.end('{"error" : "Error", "status": 500}');
     }
-    client.query(`SELECT * FROM report WHERE report_id = ${id};`, [], function (err, result) {
-      done();
-      if (err) {
-        console.info(err);
-      } else {
-        res.json({ report: result.rows[0] });
+    client.query(
+      `SELECT * FROM report WHERE report_id = ${parseInt(id)};`,
+      [],
+      function (err, result) {
+        done();
+        if (err) {
+          console.info(err);
+        } else {
+          res.json({ report: result.rows[0] });
+        }
       }
-    });
+    );
   });
 });
 
