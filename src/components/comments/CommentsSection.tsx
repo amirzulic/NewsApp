@@ -74,12 +74,16 @@ function CommentsSection(props: Props) {
               color: 'text.secondary',
               backgroundColor: 'primary.light'
             }}>
-            {comments.map((item, key) => (
-              <div key={key}>
-                <Comment comment={item} />
-                <br />
-              </div>
-            ))}
+            {comments.length !== 0 ? (
+              comments.map((item, key) => (
+                <div key={key}>
+                  <Comment comment={item} />
+                  <br />
+                </div>
+              ))
+            ) : (
+              <div>There is no comments on this article. Wanna be the first to comment?</div>
+            )}
           </Box>
           {error && (
             <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={error}>

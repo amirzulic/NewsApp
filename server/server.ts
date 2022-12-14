@@ -43,7 +43,6 @@ app.get('/reports', (req, res) => {
 
 app.get('/reports/:id', (req, res) => {
   let id = req.params.id;
-  console.log(id);
   pool.connect(function (err, client, done) {
     if (err) {
       res.end('{"error" : "Error", "status": 500}');
