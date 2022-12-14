@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { postComment } from '../../service/CommentService';
 import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 interface Props {
   report_id: string | undefined;
@@ -14,23 +16,24 @@ function CommentForm(props: Props) {
   let navigate = useNavigate();
 
   const [comment, setComment] = useState('');
+  const [hasFailed, setHasFailed] = useState(false);
+
   function handleComment(e) {
     setComment(e.target.value);
   }
 
   const createComment = () => {
     let sendComment = {
-      //comment_id: 10,
       comment: comment,
       date: new Date().toDateString(),
       report_id: props.report_id
     };
     postComment(sendComment)
-      .then((res) => {
-        alert(res.data.message);
+      .then(() => {
         navigate(0);
       })
       .catch((err) => {
+        setHasFailed(true);
         console.log(err);
       });
   };
@@ -61,6 +64,14 @@ function CommentForm(props: Props) {
           </Grid>
         </Grid>
       </Box>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        open={hasFailed}
+        autoHideDuration={5000}>
+        <Alert severity="error" sx={{ width: '100%' }}>
+          There has been a problem!
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
