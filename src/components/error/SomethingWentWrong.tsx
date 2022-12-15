@@ -3,6 +3,7 @@ import React from 'react';
 import './somethingWentWrong.css';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
+import Link from '@mui/material/Link';
 
 interface Props {
   errors: string;
@@ -20,7 +21,9 @@ function SomethingWentWrong(props: Props) {
         <Grid item xs={12}>
           <h2>
             <ContactSupportIcon />
-            Contact our support team:
+            <Link href="/contact" underline="none" color="inherit">
+              Click to contact our support team
+            </Link>
           </h2>
           <h3 className="hints">
             Support email:{' '}
