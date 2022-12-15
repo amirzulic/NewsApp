@@ -51,15 +51,25 @@ function ContactUs() {
 
   return (
     <div>
-      {formik.errors.email || formik.errors.message || hasFailed ? (
+      {(formik.touched.email && formik.errors.email) ||
+      (formik.touched.message && formik.errors.message) ||
+      hasFailed ? (
         <Snackbar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
           open={true}
           autoHideDuration={5000}>
-          <Alert severity="error" sx={{ width: '100%' }}>
-            {formik.errors.email || formik.errors.message
-              ? 'Check your email or message.'
-              : 'There has been a problem'}
+          <Alert severity={hasFailed ? 'error' : 'warning'} sx={{ width: '100%' }}>
+            {formik.touched.email && formik.values.email === ''
+              ? ' You need to provide us with your email.'
+              : null}
+            {formik.touched.message && formik.values.message === ''
+              ? ' The message field is required.'
+              : null}
+            {formik.values.email !== '' && formik.errors.email ? ' Check your email.' : null}
+            {formik.values.message !== '' && formik.errors.message
+              ? ' Your message is too long.'
+              : null}
+            {hasFailed && ' There has been a problem'}
           </Alert>
         </Snackbar>
       ) : null}
