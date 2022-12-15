@@ -27,30 +27,36 @@ function Footer() {
             <Grid item xs={12}>
               <Grid container spacing={5}>
                 <Grid item xs={12} sm={4}>
-                  <Box borderBottom={1}>Help</Box>
+                  <Box borderBottom={1}>
+                    <b>Help</b>
+                  </Box>
                   {help.map((item, key) => (
                     <Box key={key}>
-                      <Link href={key === 0 ? '/contact' : '/'} color="inherit">
+                      <Link href={key === 0 ? '/contact' : '/'} underline="none" color="inherit">
                         {item}
                       </Link>
                     </Box>
                   ))}
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <Box borderBottom={1}>Company links</Box>
+                  <Box borderBottom={1}>
+                    <b>Company links</b>
+                  </Box>
                   {LINKS_COMPANY.map((item, key) => (
                     <Box key={key}>
-                      <Link href={item.link} color="inherit">
+                      <Link href={item.link} underline="none" color="inherit">
                         {item.media}
                       </Link>
                     </Box>
                   ))}
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <Box borderBottom={1}>Creator links</Box>
+                  <Box borderBottom={1}>
+                    <b>Creator links</b>
+                  </Box>
                   {LINKS_CREATOR.map((item, key) => (
                     <Box key={key}>
-                      <Link href={item.link} color="inherit">
+                      <Link href={item.link} underline="none" color="inherit">
                         {item.media}
                       </Link>
                     </Box>
