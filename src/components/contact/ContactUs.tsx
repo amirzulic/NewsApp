@@ -35,7 +35,9 @@ function ContactUs() {
     },
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email address').required('Required'),
-      message: Yup.string().max(50, 'The message can not be longer than 50 characters!')
+      message: Yup.string()
+        .max(50, 'The message can not be longer than 50 characters!')
+        .required('Required')
     }),
     onSubmit: () => {
       const emailData = {
